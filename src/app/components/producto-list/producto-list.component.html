@@ -1,0 +1,39 @@
+<div class="producto-list-container">
+  <div class="header">
+    <h1>Catálogo de Productos</h1>
+    <p>Descubre nuestra selección de productos de alta calidad</p>
+  </div>
+
+  <!-- Estado de carga -->
+  @if (loading) {
+    <div class="loading-container">
+      <div class="spinner"></div>
+      <p>Cargando productos...</p>
+    </div>
+  }
+
+  <!-- Estado de error -->
+  @if (error) {
+    <div class="error-container">
+      <p>Error al cargar los productos. Por favor, intenta nuevamente.</p>
+      <button class="btn-reintentar" (click)="cargarProductos()">
+        Reintentar
+      </button>
+    </div>
+  }
+
+  <!-- Lista de productos -->
+  @if (!loading && !error) {
+    @if (productos.length === 0) {
+      <div class="empty-container">
+        <p>No hay productos disponibles en este momento.</p>
+      </div>
+    } @else {
+      <div class="productos-grid">
+        @for (producto of productos; track producto.id) {
+          <app-producto-card [producto]="producto"></app-producto-card>
+        }
+      </div>
+    }
+  }
+</div>

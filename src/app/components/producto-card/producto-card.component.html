@@ -1,0 +1,10 @@
+<div class="producto-card">
+  <div class="producto-imagen">
+    <img [src]="producto.imagenUrl" [alt]="producto.nombre" loading="lazy">
+  </div>
+  <div class="producto-info">
+    <h3 class="producto-nombre">{{ producto.nombre }}</h3>
+    <p class="producto-precio">{{ producto.precio | currency:'USD':'symbol':'1.2-2' }}</p>
+    <button class="btn-ver-detalle">Ver Detalle</button>
+  </div>
+</div>
