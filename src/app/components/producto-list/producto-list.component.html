@@ -24,6 +24,11 @@
 
   <!-- Lista de productos -->
   @if (!loading && !error) {
+    <div >
+      <button class="btn-reintentar" (click)="crearProducto()" >
+        Nuevo producto
+      </button>
+    </div>
     @if (productos.length === 0) {
       <div class="empty-container">
         <p>No hay productos disponibles en este momento.</p>
@@ -31,7 +36,7 @@
     } @else {
       <div class="productos-grid">
         @for (producto of productos; track producto.id) {
-          <app-producto-card [producto]="producto"></app-producto-card>
+          <app-producto-card [producto]="producto" (eliminar)="cargarProductos()"></app-producto-card>
         }
       </div>
     }

@@ -5,6 +5,6 @@
   <div class="producto-info">
     <h3 class="producto-nombre">{{ producto.nombre }}</h3>
     <p class="producto-precio">{{ producto.precio | currency:'USD':'symbol':'1.2-2' }}</p>
-    <button class="btn-ver-detalle">Ver Detalle</button>
+    <button class="btn-borrar" (click)="borrarProducto()">Borrar producto</button>
   </div>
 </div>

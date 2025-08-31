@@ -1,11 +1,16 @@
 import { Component } from '@angular/core';
-import { ProductoListComponent } from './components';
+import { RouterOutlet } from '@angular/router';
 
 @Component({
   selector: 'app-root',
-  imports: [ProductoListComponent],
+  imports: [RouterOutlet],
   templateUrl: './app.html',
   styleUrl: './app.css'
 })
 export class App {
+  mostrarLista = true;
+
+  nuevoProducto(){
+    this.mostrarLista = !this.mostrarLista;
+  }
 }

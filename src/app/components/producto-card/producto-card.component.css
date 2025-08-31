@@ -48,10 +48,10 @@
   color: #2563eb;
 }
 
-.btn-ver-detalle {
+.btn-borrar {
   width: 100%;
   padding: 12px;
-  background: linear-gradient(135deg, #2563eb, #1d4ed8);
+  background: linear-gradient(135deg, #dd5d5d, #c12d2d);
   color: white;
   border: none;
   border-radius: 8px;
@@ -61,11 +61,11 @@
   transition: all 0.3s ease;
 }
 
-.btn-ver-detalle:hover {
-  background: linear-gradient(135deg, #1d4ed8, #1e40af);
+.btn-borrar:hover {
+  background: linear-gradient(135deg, #c12d2d, #ff0000);
   transform: translateY(-1px);
 }
 
-.btn-ver-detalle:active {
+.btn-borrar:active {
   transform: translateY(0);
 }

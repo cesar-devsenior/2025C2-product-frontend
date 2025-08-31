@@ -1,0 +1,102 @@
+<div class="form-container">
+  <h2>Agregar Nuevo Producto</h2>
+  <div style="margin-bottom: 24px;">
+    <button class="btn-submit" routerLink="/productos">
+      Volver a Listado
+    </button>
+  </div>
+  <form [formGroup]="productoForm" (ngSubmit)="onSubmit()" class="producto-form">
+    
+    <div class="form-group">
+      <label for="nombre">Nombre del Producto:</label>
+      <input 
+        type="text" 
+        id="nombre" 
+        formControlName="nombre" 
+        class="form-control"
+        placeholder="Ingrese el nombre del producto"
+        [class.invalid]="nombre?.invalid && nombre?.touched"
+      >
+      @if (nombre?.invalid && nombre?.touched) {
+        <div class="error-message">
+          @if (nombre?.errors?.['required']) {
+            <span>El nombre es obligatorio</span>
+          }
+          @if (nombre?.errors?.['minlength']) {
+            <span>El nombre debe tener al menos 2 caracteres</span>
+          }
+        </div>
+      }
+    </div>
+
+    <div class="form-group">
+      <label for="precio">Precio:</label>
+      <input 
+        type="number" 
+        id="precio" 
+        formControlName="precio" 
+        class="form-control"
+        placeholder="0.00"
+        step="0.10"
+        min="0"
+        [class.invalid]="precio?.invalid && precio?.touched"
+      >
+      @if (precio?.invalid && precio?.touched) {
+        <div class="error-message">
+          @if (precio?.errors?.['required']) {
+            <span>El precio es obligatorio</span>
+          }
+          @if (precio?.errors?.['min']) {
+            <span>El precio debe ser mayor o igual a 0</span>
+          }
+        </div>
+      }
+    </div>
+
+    <div class="form-group">
+      <label for="imagenUrl">URL de la Imagen:</label>
+      <input 
+        type="url" 
+        id="imagenUrl" 
+        formControlName="imagenUrl" 
+        class="form-control"
+        placeholder="https://ejemplo.com/imagen.jpg"
+        [class.invalid]="imagenUrl?.invalid && imagenUrl?.touched"
+      >
+      @if (imagenUrl?.invalid && imagenUrl?.touched) {
+        <div class="error-message">
+          @if (imagenUrl?.errors?.['required']) {
+            <span>La URL de la imagen es obligatoria</span>
+          }
+          @if (imagenUrl?.errors?.['pattern']) {
+            <span>Debe ser una URL válida (http:// o https://)</span>
+          }
+        </div>
+      }
+    </div>
+
+    <div class="form-actions">
+      <button 
+        type="submit" 
+        class="btn-submit"
+        [disabled]="productoForm.invalid"
+      >
+        Guardar Producto
+      </button>
+      <button 
+        type="button" 
+        class="btn-reset"
+        (click)="productoForm.reset()"
+      >
+        Limpiar Formulario
+      </button>
+    </div>
+
+    @if(imagenUrl?.valid) {
+      <div class="preview">
+        <img class="img-preview" [src]="imagenUrl?.value" alt="Imagen de producto">
+      </div>  
+    }
+
+  </form>
+</div>
